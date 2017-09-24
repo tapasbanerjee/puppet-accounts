@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/BondDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/BondDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="ProductCollection" type="ProductCollection"/>
+   <xs:complexType name="ProductCollection">
+      <xs:sequence>
+         <xs:element name="Product" type="Product" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Product">
+      <xs:sequence>
+         <xs:element name="productId" type="xs:decimal"/>
+         <xs:element name="classId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="textId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="customText" type="string4000" minOccurs="0" nillable="true"/>
+         <xs:element name="spot" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="obligationDesc" type="string250" minOccurs="0" nillable="true"/>
+         <xs:element name="standardDuration" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="reviewLimit" type="xs:decimal" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="ProductPrimaryKey" type="ProductPrimaryKey"/>
+   <xs:complexType name="ProductPrimaryKey">
+      <xs:sequence>
+         <xs:element name="productId" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string4000">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="4000"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string100">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="100"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string250">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="250"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string50">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="50"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

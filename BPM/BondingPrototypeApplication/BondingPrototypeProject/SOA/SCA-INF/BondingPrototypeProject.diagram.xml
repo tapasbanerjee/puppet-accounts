@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="RequestNewBondProcess.service">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="377" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="370" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="RequestNewBondProcess.service" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpmn/bpmnProcess/RequestNewBondProcess#wsdl.interface(RequestNewBondProcessPortType)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>requestNewBond</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="IssueTaxDutyBondProcess.service">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="223" width="137" height="120">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="216" width="156" height="134">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="IssueTaxDutyBondProcess.service" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess#wsdl.interface(IssueTaxDutyBondProcessPortType)" callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess#wsdl.interface(IssueTaxDutyBondProcessPortTypeCallBack)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>start</dgm:item>
+            <dgm:item>end</dgm:item>
+            <dgm:item>bondSigned</dgm:item>
+            <dgm:item>customerCancelled</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="GetProductReviewLimit">
+        <dgm:body borderWidth="2" arcRad="20" X="881" Y="358" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="871" Y="351" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="GetProductReviewLimit" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TaxDutyBondApplication/ProductReviewLimitProject/GetProductReviewLimitBPELProcess#wsdl.interface(GetProductReviewLimitBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="GetProductBLSublimit">
+        <dgm:body borderWidth="2" arcRad="20" X="881" Y="476" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="871" Y="469" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="GetProductBLSublimit" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TaxDutyBondApplication/BondProdSubLimitProject/BondProdSubLimitBPELProcess#wsdl.interface(BondProdSubLimitBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="UpdateBondStatus">
+        <dgm:body borderWidth="2" arcRad="20" X="881" Y="594" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="871" Y="587" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="UpdateBondStatus" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TaxDutyBondApplication/BondStatusUpdateProject/BondStatusUpdateBPELProcess#wsdl.interface(BondStatusUpdateBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="RequestNewBondProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="362" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="216" Y="355" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="RequestNewBondProcess.service" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpmn/bpmnProcess/RequestNewBondProcess#wsdl.interface(RequestNewBondProcessPortType)"/>
+        <dgm:outputPort name="IssueTaxDutyBondProcess.reference" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess#wsdl.interface(IssueTaxDutyBondProcessPortType)" callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess#wsdl.interface(IssueTaxDutyBondProcessPortTypeCallBack)"/>
+        <dgm:nodeIcon URI="/oracle/bpm/fusion/soa/msg/images/bpmncomponent20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="IssueTaxDutyBondProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="439" Y="233" width="130" height="236">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="429" Y="226" width="150" height="252">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="IssueTaxDutyBondProcess.service" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess#wsdl.interface(IssueTaxDutyBondProcessPortType)" callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess#wsdl.interface(IssueTaxDutyBondProcessPortTypeCallBack)"/>
+        <dgm:outputPort name="HumanTasks.CustomerRequest.reference" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="HumanTasks.FUWReview.reference" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="HumanTasks.SeniorFUWAnalysis.reference" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="HumanTasks.TUWAnalysis.reference" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="Services.Externals.GetProductReviewLimit.reference" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TaxDutyBondApplication/ProductReviewLimitProject/GetProductReviewLimitBPELProcess#wsdl.interface(GetProductReviewLimitBPELProcess)"/>
+        <dgm:outputPort name="HumanTasks.CustomerSignBond.reference" X="120" Y="140" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="Services.Externals.GetProductBLSublimit.reference" X="120" Y="165" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TaxDutyBondApplication/BondProdSubLimitProject/BondProdSubLimitBPELProcess#wsdl.interface(BondProdSubLimitBPELProcess)"/>
+        <dgm:outputPort name="Services.Externals.UpdateBondStatus.reference" X="120" Y="190" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TaxDutyBondApplication/BondStatusUpdateProject/BondStatusUpdateBPELProcess#wsdl.interface(BondStatusUpdateBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/bpm/fusion/soa/msg/images/bpmncomponent20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="CustomerRequest">
+        <dgm:body borderWidth="2" arcRad="20" X="683" Y="26" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="673" Y="19" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="FUWReview">
+        <dgm:body borderWidth="2" arcRad="20" X="683" Y="121" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="673" Y="114" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="SeniorFUWAnalysis">
+        <dgm:body borderWidth="2" arcRad="20" X="683" Y="216" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="673" Y="209" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="TUWAnalysis">
+        <dgm:body borderWidth="2" arcRad="20" X="683" Y="311" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="673" Y="304" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="CustomerSignBond">
+        <dgm:body borderWidth="2" arcRad="20" X="683" Y="429" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="673" Y="422" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="RequestNewBondProcess/IssueTaxDutyBondProcess.reference" target="IssueTaxDutyBondProcess/IssueTaxDutyBondProcess.service" width="2">
+        <dgm:gSegment X1="366" Y1="387" X2="390" Y2="387"/>
+        <dgm:gSegment X1="390" Y1="387" X2="390" Y2="258"/>
+        <dgm:gSegment X1="390" Y1="258" X2="429" Y2="258"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/HumanTasks.CustomerRequest.reference" target="CustomerRequest/TaskService" width="2">
+        <dgm:gSegment X1="579" Y1="258" X2="604" Y2="258"/>
+        <dgm:gSegment X1="604" Y1="258" X2="604" Y2="51"/>
+        <dgm:gSegment X1="604" Y1="51" X2="673" Y2="51"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RequestNewBondProcess.service" target="RequestNewBondProcess/RequestNewBondProcess.service" width="2">
+        <dgm:gSegment X1="168" Y1="387" X2="216" Y2="387"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/HumanTasks.FUWReview.reference" target="FUWReview/TaskService" width="2">
+        <dgm:gSegment X1="579" Y1="283" X2="619" Y2="283"/>
+        <dgm:gSegment X1="619" Y1="283" X2="619" Y2="146"/>
+        <dgm:gSegment X1="619" Y1="146" X2="673" Y2="146"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/HumanTasks.SeniorFUWAnalysis.reference" target="SeniorFUWAnalysis/TaskService" width="2">
+        <dgm:gSegment X1="579" Y1="308" X2="634" Y2="308"/>
+        <dgm:gSegment X1="634" Y1="308" X2="634" Y2="241"/>
+        <dgm:gSegment X1="634" Y1="241" X2="673" Y2="241"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/HumanTasks.TUWAnalysis.reference" target="TUWAnalysis/TaskService" width="2">
+        <dgm:gSegment X1="579" Y1="333" X2="604" Y2="333"/>
+        <dgm:gSegment X1="604" Y1="333" X2="604" Y2="336"/>
+        <dgm:gSegment X1="604" Y1="336" X2="673" Y2="336"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/Services.Externals.GetProductReviewLimit.reference" target="GetProductReviewLimit" width="2">
+        <dgm:gSegment X1="579" Y1="358" X2="649" Y2="358"/>
+        <dgm:gSegment X1="649" Y1="358" X2="649" Y2="400"/>
+        <dgm:gSegment X1="649" Y1="400" X2="847" Y2="400"/>
+        <dgm:gSegment X1="847" Y1="400" X2="847" Y2="368"/>
+        <dgm:gSegment X1="847" Y1="368" X2="871" Y2="368"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/HumanTasks.CustomerSignBond.reference" target="CustomerSignBond/TaskService" width="2">
+        <dgm:gSegment X1="579" Y1="383" X2="634" Y2="383"/>
+        <dgm:gSegment X1="634" Y1="383" X2="634" Y2="454"/>
+        <dgm:gSegment X1="634" Y1="454" X2="673" Y2="454"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/Services.Externals.GetProductBLSublimit.reference" target="GetProductBLSublimit" width="2">
+        <dgm:gSegment X1="579" Y1="408" X2="619" Y2="408"/>
+        <dgm:gSegment X1="619" Y1="408" X2="619" Y2="518"/>
+        <dgm:gSegment X1="619" Y1="518" X2="847" Y2="518"/>
+        <dgm:gSegment X1="847" Y1="518" X2="847" Y2="486"/>
+        <dgm:gSegment X1="847" Y1="486" X2="871" Y2="486"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess/Services.Externals.UpdateBondStatus.reference" target="UpdateBondStatus" width="2">
+        <dgm:gSegment X1="579" Y1="433" X2="604" Y2="433"/>
+        <dgm:gSegment X1="604" Y1="433" X2="604" Y2="604"/>
+        <dgm:gSegment X1="604" Y1="604" X2="871" Y2="604"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="IssueTaxDutyBondProcess.service" target="IssueTaxDutyBondProcess/IssueTaxDutyBondProcess.service" width="2">
+        <dgm:gSegment X1="168" Y1="233" X2="405" Y2="233"/>
+        <dgm:gSegment X1="405" Y1="233" X2="405" Y2="258"/>
+        <dgm:gSegment X1="405" Y1="258" X2="429" Y2="258"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

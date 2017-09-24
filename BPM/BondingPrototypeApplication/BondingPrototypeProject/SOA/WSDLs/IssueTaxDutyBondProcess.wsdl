@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--########################################################################################-->
+<!--####                                                                                ####-->
+<!--####          THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT MANUALLY MODIFY         ####-->
+<!--#### CHANGES TO THIS FILE MAY PRODUCE UNEXPECTED BEHAVIOR AND WOULD BE OVERWRITTEN  ####-->
+<!--####                                                                                ####-->
+<!--########################################################################################-->
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess" xmlns:tns="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess"  xmlns:tns6="https://group.atradius.com"  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" >
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/IssueTaxDutyBondProcess">
+            <xsd:import namespace="https://group.atradius.com" schemaLocation="../Schemas/TaxDutyBond.xsd"/>
+            <xsd:element name="start">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns6:TaxDutyBond"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="endResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns6:TaxDutyBond"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="endExceptionResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="errorInfo" type="xsd:string"/>
+                        <xsd:element name="faultName" type="xsd:string"/>
+                        <xsd:element name="faultNamespace" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="bondSignedResponse">
+                <xsd:complexType>
+                    <xsd:sequence/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="customerCancelledResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="customerCancelled" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="start">
+        <wsdl:part name="parameters" element="tns:start"/>
+    </wsdl:message>
+    <wsdl:message name="endResponse">
+        <wsdl:part name="parameters" element="tns:endResponse"/>
+    </wsdl:message>
+    <wsdl:message name="endExceptionResponse">
+        <wsdl:part name="parameters" element="tns:endExceptionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="bondSignedResponse">
+        <wsdl:part name="parameters" element="tns:bondSignedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="customerCancelledResponse">
+        <wsdl:part name="parameters" element="tns:customerCancelledResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="IssueTaxDutyBondProcessPortTypeCallBack">
+        <wsdl:operation name="end">
+            <wsdl:input message="tns:endResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="bondSigned">
+            <wsdl:input message="tns:bondSignedResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="customerCancelled">
+            <wsdl:input message="tns:customerCancelledResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="endException">
+            <wsdl:input message="tns:endExceptionResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="IssueTaxDutyBondProcessPortType">
+        <wsdl:operation name="start">
+            <wsdl:input message="tns:start"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <plnk:partnerLinkType name="IssueTaxDutyBondProcessPortTypePartnerLinkType">
+        <plnk:role name="IssueTaxDutyBondProcessPortTypeProvider">
+            <plnk:portType name="tns:IssueTaxDutyBondProcessPortType"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</wsdl:definitions>

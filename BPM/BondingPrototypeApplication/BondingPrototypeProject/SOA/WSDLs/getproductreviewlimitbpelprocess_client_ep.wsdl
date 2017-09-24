@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="GetProductReviewLimitBPELProcess"
+     targetNamespace="http://xmlns.oracle.com/TaxDutyBondApplication/ProductReviewLimitProject/GetProductReviewLimitBPELProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/TaxDutyBondApplication/ProductReviewLimitProject/GetProductReviewLimitBPELProcess"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://184.170.237.13:7005/soa-infra/services/default/ProductReviewLimitProject!1.0/WSDLs/GetProductReviewLimitBPELProcess.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="GetProductReviewLimitBPELProcess">
+        <plnk:role name="GetProductReviewLimitBPELProcessProvider" portType="client:GetProductReviewLimitBPELProcess"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/TaxDutyBondApplication/ProductReviewLimitProject/GetProductReviewLimitBPELProcess"
+                 schemaLocation="../Schemas/GetProductReviewLimitBPELProcess_1.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="GetProductReviewLimitBPELProcessRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="GetProductReviewLimitBPELProcessResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="GetProductReviewLimitBPELProcess">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:GetProductReviewLimitBPELProcessRequestMessage"/>
+            <wsdl:output message="client:GetProductReviewLimitBPELProcessResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="GetProductReviewLimitBPELProcessBinding" type="client:GetProductReviewLimitBPELProcess">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="getproductreviewlimitbpelprocess_client_ep">
+        <wsdl:port name="GetProductReviewLimitBPELProcess_pt" binding="client:GetProductReviewLimitBPELProcessBinding">
+            <soap:address location="http://184.170.237.13:7005/soa-infra/services/default/ProductReviewLimitProject/getproductreviewlimitbpelprocess_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

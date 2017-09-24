@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="root_descriptor_alias">PRODUCT</entry>
+   <entry key="PRODUCT.CLASS_ID:db_column_precision">38</entry>
+   <entry key="PRODUCT.PRODUCT_ID:db_column_precision">38</entry>
+   <entry key="PRODUCT.CLASS_ID:db_column_not_null">false</entry>
+   <entry key="PRODUCT.REVIEW_LIMIT:db_column_type">NUMBER</entry>
+   <entry key="PRODUCT:db_table_type">TABLE</entry>
+   <entry key="PRODUCT.CLASS_ID:db_column_scale">0</entry>
+   <entry key="PRODUCT.TEXT_ID:db_column_type">NUMBER</entry>
+   <entry key="PRODUCT.CUSTOM_TEXT:db_column_not_null">false</entry>
+   <entry key="PRODUCT:db_column_7">REVIEW_LIMIT</entry>
+   <entry key="PRODUCT:db_column_6">STANDARD_DURATION</entry>
+   <entry key="PRODUCT:db_column_5">OBLIGATION_DESC</entry>
+   <entry key="PRODUCT:db_column_4">SPOT</entry>
+   <entry key="PRODUCT.PRODUCT_ID:db_column_type">NUMBER</entry>
+   <entry key="PRODUCT.CUSTOM_TEXT:db_column_type">VARCHAR2</entry>
+   <entry key="PRODUCT:db_column_3">CUSTOM_TEXT</entry>
+   <entry key="PRODUCT:db_column_2">TEXT_ID</entry>
+   <entry key="PRODUCT.SPOT:db_column_not_null">false</entry>
+   <entry key="PRODUCT:db_column_1">CLASS_ID</entry>
+   <entry key="PRODUCT.TEXT_ID:db_column_not_null">false</entry>
+   <entry key="PRODUCT:db_column_0">PRODUCT_ID</entry>
+   <entry key="PRODUCT.OBLIGATION_DESC:db_column_type">VARCHAR2</entry>
+   <entry key="PRODUCT.TEXT_ID:db_column_precision">38</entry>
+   <entry key="PRODUCT.CUSTOM_TEXT:db_column_size">4000</entry>
+   <entry key="PRODUCT.REVIEW_LIMIT:db_column_precision">38</entry>
+   <entry key="PRODUCT.TEXT_ID:db_column_scale">0</entry>
+   <entry key="PRODUCT.OBLIGATION_DESC:db_column_size">250</entry>
+   <entry key="PRODUCT.CLASS_ID:db_column_type">NUMBER</entry>
+   <entry key="return_single_result_set">false</entry>
+   <entry key="PRODUCT.PRODUCT_ID:db_column_scale">0</entry>
+   <entry key="PRODUCT.STANDARD_DURATION:db_column_not_null">false</entry>
+   <entry key="PRODUCT.REVIEW_LIMIT:db_column_not_null">false</entry>
+   <entry key="PRODUCT.STANDARD_DURATION:db_column_type">VARCHAR2</entry>
+   <entry key="PRODUCT.REVIEW_LIMIT:db_column_scale">0</entry>
+   <entry key="PRODUCT.SPOT:db_column_type">VARCHAR2</entry>
+   <entry key="PRODUCT.OBLIGATION_DESC:db_column_not_null">false</entry>
+   <entry key="PRODUCT.STANDARD_DURATION:db_column_size">50</entry>
+   <entry key="PRODUCT.SPOT:db_column_size">100</entry>
+   <entry key="PRODUCT.PRODUCT_ID:db_column_not_null">true</entry>
+</properties>

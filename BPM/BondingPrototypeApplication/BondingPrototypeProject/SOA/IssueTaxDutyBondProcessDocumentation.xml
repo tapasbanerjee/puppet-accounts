@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="12.1.3" fileRevision="20120601"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+   <component name="IssueTaxDutyBondProcess">
+      <topicDocumentations>
+         <topicDocumentation name="IssueTaxDutyBondProcess"/>
+         <topicDocumentation name="ACT20173547833695">
+            <labels>
+               <label locale="en">CustomerRequest</label>
+            </labels>
+            <descriptions>
+               <description locale="en">CustomerRequest</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20180751949370">
+            <labels>
+               <label locale="en">FUWReview</label>
+            </labels>
+            <descriptions>
+               <description locale="en">FUWReview</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20188509479333">
+            <labels>
+               <label locale="en">SeniorFUWAnalysis</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20188700979851">
+            <labels>
+               <label locale="en">TUW Analysis</label>
+            </labels>
+            <descriptions>
+               <description locale="en">TUW Analysis</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20188751914019">
+            <labels>
+               <label locale="en">Bond Approved</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20188756812717">
+            <labels>
+               <label locale="en">Issued Bond</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20259755520527">
+            <labels>
+               <label locale="en">GetProductReviewLimits</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20268435916778">
+            <labels>
+               <label locale="en">CustomerSignBond</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT2026862422666">
+            <labels>
+               <label locale="en">GetProductBLSublimit</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT2031037674127">
+            <labels>
+               <label locale="en">UpdateBondStatus</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20320028107846">
+            <labels>
+               <label locale="en">UpdateBondStatus</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="EVT20173519059173">
+            <labels>
+               <label locale="en">Start</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="EVT20173519059221">
+            <labels>
+               <label locale="en">Bond Refused</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="EVT20188763698888">
+            <labels>
+               <label locale="en">Bond Signed</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="EVT20302596531158">
+            <labels>
+               <label locale="en">CustomerCancelled</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW20180756367140">
+            <labels>
+               <label locale="en">Valid Limits ?</label>
+            </labels>
+            <descriptions>
+               <description locale="en">Valid Limits ?</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW20188409479064">
+            <labels>
+               <label locale="en">FUW Approved ?</label>
+            </labels>
+            <descriptions>
+               <description locale="en">FUW Approved ?</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW2018850185176">
+            <labels>
+               <label locale="en">Senior FUW Approval Needed ?</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW20188544562390">
+            <labels>
+               <label locale="en">SeniorFUW Approved ?</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW20188577329279">
+            <labels>
+               <label locale="en">Limits > TUW Limits</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW20188728350658">
+            <labels>
+               <label locale="en">TUW Approved ?</label>
+            </labels>
+            <descriptions>
+               <description locale="en">TUW Approved ?</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="GTW20302586741712">
+            <labels>
+               <label locale="en">Customer Cancelled ?</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20448829948285">
+            <labels>
+               <label locale="en">Exception Handler Subprocess</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="EVT2044883052475">
+            <labels>
+               <label locale="en">Catch Exceptions</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="EVT2044883052505">
+            <labels>
+               <label locale="en">End Exception</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="ACT20448845550185">
+            <labels>
+               <label locale="en">Log Error Activity</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20448830525215"/>
+         <topicDocumentation name="sf20448847289583"/>
+         <topicDocumentation name="sf20173519059372"/>
+         <topicDocumentation name="sf20173618125634"/>
+         <topicDocumentation name="sf2018075917411">
+            <labels>
+               <label locale="en">NO</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20180762040211"/>
+         <topicDocumentation name="sf20188416618120">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188505740192">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188530970432">
+            <labels>
+               <label locale="en">YES</label>
+            </labels>
+            <descriptions>
+               <description locale="en">YES</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188548005354"/>
+         <topicDocumentation name="sf20188564080878"/>
+         <topicDocumentation name="sf20188585386645">
+            <labels>
+               <label locale="en">YES</label>
+            </labels>
+            <descriptions>
+               <description locale="en">YES</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188603179387">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188726957878">
+            <labels>
+               <label locale="en">YES</label>
+            </labels>
+            <descriptions>
+               <description locale="en">YES</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188731480066"/>
+         <topicDocumentation name="sf20188732577443"/>
+         <topicDocumentation name="sf20188755426653">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20188761191110"/>
+         <topicDocumentation name="sf20189030411529">
+            <labels>
+               <label locale="en">NO</label>
+            </labels>
+            <descriptions>
+               <description locale="en">NO</description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf20259759982484"/>
+         <topicDocumentation name="sf20268457283359"/>
+         <topicDocumentation name="sf20268459390178"/>
+         <topicDocumentation name="sf20268625320282"/>
+         <topicDocumentation name="sf20302587949275">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf2030260262973">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf2031038673493"/>
+         <topicDocumentation name="sf20313935542383"/>
+         <topicDocumentation name="sf2032003821462"/>
+      </topicDocumentations>
+   </component>
+</processDocumentation>

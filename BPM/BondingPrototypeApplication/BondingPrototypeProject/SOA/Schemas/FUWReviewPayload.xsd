@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns0="https://group.atradius.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="https://group.atradius.com" schemaLocation="TaxDutyBond.xsd"/>
+   <complexType name="FUWReviewPayloadType">
+      <sequence>
+         <element ref="ns0:TaxDutyBond"/>
+         <element name="FUWReviewOutcome" type="xsd:string"/>
+      </sequence>
+   </complexType>
+</schema>
