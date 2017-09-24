@@ -1,0 +1,11 @@
+<adapter-config name="dbReference" adapter="db" wsdlLocation="../WSDLs/dbReference.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="AtradiusDB" location="eis/DB/Bond"/>
+  <endpoint-interaction portType="dbReference_ptt" operation="dbReference">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select password from users where user_name = ?"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

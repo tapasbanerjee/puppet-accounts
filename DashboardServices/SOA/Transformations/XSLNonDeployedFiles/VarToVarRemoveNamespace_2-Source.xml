@@ -1,0 +1,212 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:root xmlns:user="http://xmlns.oracle.com/bpel/workflow/userMetadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://test.com" xmlns:task="http://xmlns.oracle.com/bpel/workflow/task" xmlns:java="http://schemas.xmlsoap.org/wsdl/java/" xmlns:common="http://xmlns.oracle.com/bpel/workflow/common" xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns8="https://group.atradius1.com" xmlns:ns7="https://group.atradius.com" xmlns:ns6="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService" xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/common/tsc" xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService" xmlns:ns3="http://xmlns.oracle.com/bpel/workflow/taskQueryService/schema" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns2="http://xmlns.oracle.com/bpel/workflow/taskError" xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskQuery" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:format="http://schemas.xmlsoap.org/wsdl/formatbinding/">
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>231</BondId>
+              <BondStatus>APPROVED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion>
+            <Decisions>APPROVED AS SUBMITTED</Decisions>
+          </UnderwriterOpinion>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>231</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>232</BondId>
+              <BondStatus>APPROVED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion/>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>232</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>233</BondId>
+              <ProductId>
+                <BondAmount>1500000000</BondAmount>
+              </ProductId>
+              <BondStatus>REQUESTED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion>
+            <Decisions>APPROVED AS SUBMITTED</Decisions>
+          </UnderwriterOpinion>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>233</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>234</BondId>
+              <ProductId>
+                <BondAmount/>
+              </ProductId>
+              <BondStatus>REQUESTED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion>
+            <Decisions>APPROVED AS SUBMITTED</Decisions>
+          </UnderwriterOpinion>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>234</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>235</BondId>
+              <ProductId>
+                <BondAmount/>
+              </ProductId>
+              <BondStatus>REQUESTED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion>
+            <Decisions>APPROVED AS SUBMITTED</Decisions>
+          </UnderwriterOpinion>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>235</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>236</BondId>
+              <ProductId>
+                <BondAmount>20000</BondAmount>
+              </ProductId>
+              <BondStatus>REQUESTED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion>
+            <Decisions>APPROVED AS SUBMITTED</Decisions>
+          </UnderwriterOpinion>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>236</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+  <tns:root2>
+    <tns:TaskStatus>COMPLETED</tns:TaskStatus>
+    <payload xmlns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <TaxDutyBond xmlns="https://test.com">
+        <CustomerBond>
+          <CustomerId>testfuw123</CustomerId>
+          <PolicyDtl>
+            <BondDtl>
+              <BondId>237</BondId>
+              <ProductId>
+                <BondAmount>20000000</BondAmount>
+              </ProductId>
+              <BondStatus>REQUESTED</BondStatus>
+            </BondDtl>
+          </PolicyDtl>
+        </CustomerBond>
+        <Analysis>
+          <UnderwriterOpinion>
+            <Decisions>APPROVED AS SUBMITTED</Decisions>
+          </UnderwriterOpinion>
+        </Analysis>
+        <AdditionalADFInputs>
+          <UserId>testfuw123</UserId>
+          <UserRole>FUW</UserRole>
+          <BondId>237</BondId>
+          <ButtonType>SUBMIT</ButtonType>
+        </AdditionalADFInputs>
+      </TaxDutyBond>
+      <FUWReviewOutcome/>
+    </payload>
+  </tns:root2>
+</tns:root>

@@ -1,0 +1,36 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="FetchDashboardSOAPService"
+     targetNamespace="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+     xmlns:tns="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+     xmlns:inp1="https://group.atradius.com"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="https://group.atradius.com" schemaLocation="../Schemas/DashboardServiceBPELProcess.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="taskListRequestMessage">
+        <wsdl:part name="payload" element="inp1:processTaskList"/>
+    </wsdl:message>
+    <wsdl:message name="taskListReplyMessage">
+        <wsdl:part name="payload" element="inp1:processResponseTaskList"/>
+    </wsdl:message>
+    <wsdl:message name="taskDetailRequestMessage">
+        <wsdl:part name="payload" element="inp1:processTaskDetails"/>
+    </wsdl:message>
+    <wsdl:message name="taskDetailReplyMessage">
+        <wsdl:part name="payload" element="inp1:processResponseTaskDetails"/>
+    </wsdl:message>
+    <wsdl:portType name="execute_ptt">
+        <wsdl:operation name="getDashboardTaskList">
+            <wsdl:input message="tns:taskListRequestMessage"/>
+            <wsdl:output message="tns:taskListReplyMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDashboardTaskDetails">
+            <wsdl:input message="tns:taskDetailRequestMessage"/>
+            <wsdl:output message="tns:taskDetailReplyMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

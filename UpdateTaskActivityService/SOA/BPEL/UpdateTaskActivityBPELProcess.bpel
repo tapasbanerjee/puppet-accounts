@@ -1,0 +1,285 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sat Sep 02 06:54:09 IST 2017
+  Author:  ibm
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="UpdateTaskActivityBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/AtradiusUtilityApplication2/UpdateTaskActivityService/UpdateTaskActivityBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/AtradiusUtilityApplication2/UpdateTaskActivityService/UpdateTaskActivityBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://oracle.com/sca/soapservice/AtradiusUtilityApplication2/UpdateTaskActivityService/UpdateTaskActivityWS"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication2/UpdateTaskActivityService/dbReference"
+         xmlns:ns3="https://group.atradius.com" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference"
+         xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/taskQueryService"
+         xmlns:ns6="http://xmlns.oracle.com/bpel/workflow/common"
+         xmlns:ns7="http://xmlns.oracle.com/bpel/workflow/taskQuery"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns8="http://xmlns.oracle.com/bpel/workflow/task"
+         xmlns:ns9="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService"
+         xmlns:ns10="http://xmlns.oracle.com/bpel/workflow/taskService"
+         xmlns:ns11="http://xmlns.oracle.com/singleString"
+         xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication2/UpdateTaskActivityService/dbReference1"
+         xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference1">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <import namespace="http://xmlns.oracle.com/singleString" location="../Schemas/singleString.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://oracle.com/sca/soapservice/AtradiusUtilityApplication2/UpdateTaskActivityService/UpdateTaskActivityWS"
+          location="../WSDLs/UpdateTaskActivityWSWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+          ui:processWSDL="true"/>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="UpdateTaskActivityWS" partnerLinkType="ns1:UpdateTaskActivityWS" myRole="execute_ptt"/>
+    <partnerLink name="QueryTaskService" partnerLinkType="ns5:QueryTaskService" partnerRole="TaskQueryService"/>
+    <partnerLink name="UpdateTaskService" partnerLinkType="ns10:TaskService" partnerRole="TaskService"
+                 myRole="TaskServiceCallbackListener"/>
+    <partnerLink name="dbReference1" partnerLinkType="ns12:dbReference1_plt" partnerRole="dbReference1_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="receiveInput_execute_InputVariable" messageType="ns1:requestMessage"/>
+    <variable name="replyOutput_execute_OutputVariable" messageType="ns1:replyMessage"/>
+    <variable name="InvokeQueryTask_queryTasks_InputVariable" messageType="ns5:taskListRequestMessage"/>
+    <variable name="InvokeQueryTask_queryTasks_OutputVariable" messageType="ns5:taskListResponseMessage"/>
+    <variable name="InvokeGetTaskDetailById_getTaskDetailsById_InputVariable"
+              messageType="ns5:taskDetailsByIdRequestMessage"/>
+    <variable name="InvokeGetTaskDetailById_getTaskDetailsById_OutputVariable"
+              messageType="ns5:taskDetailsResponseMessage"/>
+    <variable name="InvokeUpdateTask_updateTask_InputVariable" messageType="ns10:updateTaskMessage"/>
+    <variable name="InvokeUpdateTask_updateTask_OutputVariable" messageType="ns10:taskMessage"/>
+    <variable name="InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable"
+              messageType="ns10:updateTaskOutcomeMessage"/>
+    <variable name="InvokeUpdateTaskOutcome_updateTaskOutcome_OutputVariable" messageType="ns10:taskMessage"/>
+    <variable name="InvokeDB_dbReference1Select_InputVariable" messageType="ns12:dbReference1Select_inputParameters"/>
+    <variable name="InvokeDB_dbReference1Select_OutputVariable" messageType="ns12:UsersCollection_msg"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <assign name="AssignError">
+        <copy>
+          <from>"Error"</from>
+          <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_execute_OutputVariable.payload/ns3:result</to>
+        </copy>
+      </assign>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in UpdateTaskActivityBPELProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="UpdateTaskActivityWS" portType="ns1:execute_ptt" operation="execute"
+             variable="receiveInput_execute_InputVariable" createInstance="yes"/>
+    <assign name="AssignUserName">
+      <copy>
+        <from>$receiveInput_execute_InputVariable.payload/ns3:AdditionalADFInputs/ns3:UserId</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeDB_dbReference1Select_InputVariable.dbReference1Select_inputParameters/ns13:uName</to>
+      </copy>
+    </assign>
+    <invoke name="InvokeDB" partnerLink="dbReference1" portType="ns12:dbReference1_ptt"
+            operation="dbReference1Select" inputVariable="InvokeDB_dbReference1Select_InputVariable"
+            outputVariable="InvokeDB_dbReference1Select_OutputVariable" bpelx:invokeAsDetail="no"/>
+    <assign name="AssignQueryTaskInput">
+      <copy>
+        <from>$receiveInput_execute_InputVariable.payload/ns3:AdditionalADFInputs/ns3:UserId</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns6:workflowContext/ns6:credential/ns6:login</to>
+      </copy>
+      <copy>
+        <from>$InvokeDB_dbReference1Select_OutputVariable.UsersCollection/ns13:Users/ns13:password</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns6:workflowContext/ns6:credential/ns6:password</to>
+      </copy>
+      <copy>
+        <from>0</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/@startRow</to>
+      </copy>
+      <copy>
+        <from>0</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/@endRow</to>
+      </copy>
+      <copy>
+        <from>"TASKNUMBER"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:displayColumnList/ns7:displayColumn</to>
+      </copy>
+      <copy>
+        <from>"Payload"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:optionalInfoList/ns7:taskOptionalInfo</to>
+      </copy>
+      <copy>
+        <from>"MY_AND_GROUP"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:predicate/ns7:assignmentFilter</to>
+      </copy>
+      <copy>
+        <from>"OR"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:predicate/ns7:predicate/ns7:logicalOperator</to>
+      </copy>
+      <copy>
+        <from>"WFTask"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:predicate/ns7:predicate/ns7:clause/ns7:column/@tableName</to>
+      </copy>
+      <copy>
+        <from>"title"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:predicate/ns7:predicate/ns7:clause/ns7:column/ns7:columnName</to>
+      </copy>
+      <copy>
+        <from>"EQ"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:predicate/ns7:predicate/ns7:clause/ns7:operator</to>
+      </copy>
+      <copy>
+        <from>$receiveInput_execute_InputVariable.payload/ns3:CustomerBond/ns3:PolicyDtl/ns3:BondDtl/ns3:BondId</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTask_queryTasks_InputVariable.payload/ns7:taskPredicateQuery/ns7:predicate/ns7:predicate/ns7:clause/ns7:value</to>
+      </copy>
+    </assign>
+    <assign name="TransformQueryTaskInput">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/TransformQueryTaskInput_1.xsl", $InvokeQueryTask_queryTasks_InputVariable.payload)</from>
+        <to variable="InvokeQueryTask_queryTasks_InputVariable" part="payload"/>
+      </copy>
+    </assign>
+    <invoke name="InvokeQueryTask" partnerLink="QueryTaskService"
+            portType="ns5:TaskQueryService" operation="queryTasks"
+            inputVariable="InvokeQueryTask_queryTasks_InputVariable"
+            outputVariable="InvokeQueryTask_queryTasks_OutputVariable" bpelx:invokeAsDetail="no"/>
+    <if name="If_TaskId">
+      <documentation>
+        <![CDATA[Task present?]]>
+      </documentation>
+      <condition>$InvokeQueryTask_queryTasks_OutputVariable.payload/ns8:task/ns8:systemAttributes/ns8:taskId</condition>
+      <sequence>
+        <assign name="AssignTaskId">
+          <copy>
+            <from>$receiveInput_execute_InputVariable.payload/ns3:AdditionalADFInputs/ns3:UserId</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetTaskDetailById_getTaskDetailsById_InputVariable.payload/ns6:workflowContext/ns6:credential/ns6:login</to>
+          </copy>
+          <copy>
+            <from>$InvokeQueryTask_queryTasks_OutputVariable.payload/ns8:task/ns8:systemAttributes/ns8:taskId</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetTaskDetailById_getTaskDetailsById_InputVariable.payload/ns5:taskId</to>
+          </copy>
+          <copy>
+            <from>$InvokeDB_dbReference1Select_OutputVariable.UsersCollection/ns13:Users/ns13:password</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetTaskDetailById_getTaskDetailsById_InputVariable.payload/ns6:workflowContext/ns6:credential/ns6:password</to>
+          </copy>
+        </assign>
+        <invoke name="InvokeGetTaskDetailById" partnerLink="QueryTaskService" portType="ns5:TaskQueryService"
+                operation="getTaskDetailsById" inputVariable="InvokeGetTaskDetailById_getTaskDetailsById_InputVariable"
+                outputVariable="InvokeGetTaskDetailById_getTaskDetailsById_OutputVariable" bpelx:invokeAsDetail="no"/>
+        <assign name="TransformUpdateTaskInput">
+          <bpelx:annotation>
+            <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from>ora:doXSLTransformForDoc("../Transformations/TransformUpdateTaskInput_2.xsl", $InvokeGetTaskDetailById_getTaskDetailsById_OutputVariable.payload, "receiveInput_execute_InputVariable.payload", $receiveInput_execute_InputVariable.payload, "InvokeDB_dbReference1Select_OutputVariable.UsersCollection", $InvokeDB_dbReference1Select_OutputVariable.UsersCollection)</from>
+            <to variable="InvokeUpdateTask_updateTask_InputVariable" part="payload"/>
+          </copy>
+        </assign>
+        <invoke name="InvokeUpdateTask" partnerLink="UpdateTaskService" portType="ns10:TaskService"
+                operation="updateTask" inputVariable="InvokeUpdateTask_updateTask_InputVariable"
+                outputVariable="InvokeUpdateTask_updateTask_OutputVariable" bpelx:invokeAsDetail="no"/>
+        <if name="If_TaskOutcome">
+          <documentation>
+            <![CDATA[SUBMIT/CANCEL]]>
+          </documentation>
+          <condition>$receiveInput_execute_InputVariable.payload/ns3:AdditionalADFInputs/ns3:ButtonType!="SAVE"</condition>
+          <sequence>
+            <assign name="AssignOutcome">
+              <copy>
+                <from>$receiveInput_execute_InputVariable.payload/ns3:AdditionalADFInputs/ns3:UserId</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable.payload/ns6:workflowContext/ns6:credential/ns6:login</to>
+              </copy>
+              <copy>
+                <from>$InvokeUpdateTask_updateTask_OutputVariable.payload/ns8:systemAttributes/ns8:taskId</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable.payload/ns10:taskId</to>
+              </copy>
+              <copy>
+                <from>$InvokeUpdateTask_updateTask_OutputVariable.payload/ns8:taskDefinitionURI</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable.payload/ns8:task/ns8:taskDefinitionURI</to>
+              </copy>
+              <copy>
+                <from>$receiveInput_execute_InputVariable.payload/ns3:AdditionalADFInputs/ns3:ButtonType</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable.payload/ns10:outcome</to>
+              </copy>
+              <copy>
+                <from>$InvokeDB_dbReference1Select_OutputVariable.UsersCollection/ns13:Users/ns13:password</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable.payload/ns6:workflowContext/ns6:credential/ns6:password</to>
+              </copy>
+            </assign>
+            <invoke name="InvokeUpdateTaskOutcome" partnerLink="UpdateTaskService" portType="ns10:TaskService"
+                    operation="updateTaskOutcome"
+                    inputVariable="InvokeUpdateTaskOutcome_updateTaskOutcome_InputVariable"
+                    outputVariable="InvokeUpdateTaskOutcome_updateTaskOutcome_OutputVariable"
+                    bpelx:invokeAsDetail="no"/>
+          </sequence>
+          <else>
+            <documentation>
+              <![CDATA[SAVE]]>
+            </documentation>
+            <empty name="Empty"/>
+          </else>
+        </if>
+        <assign name="AssignReplyOutput">
+          <copy>
+            <from>"SUCCESS"</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_execute_OutputVariable.payload/ns3:result</to>
+          </copy>
+        </assign>
+      </sequence>
+      <else>
+        <documentation>
+          <![CDATA[No]]>
+        </documentation>
+        <assign name="AssignOutput">
+          <copy>
+            <from>"Task already submitted"</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_execute_OutputVariable.payload/ns3:result</to>
+          </copy>
+        </assign>
+      </else>
+    </if>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="UpdateTaskActivityWS" portType="ns1:execute_ptt" operation="execute"
+           variable="replyOutput_execute_OutputVariable"
+           />
+  </sequence>
+</process>

@@ -1,0 +1,33 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="FetchDashboardSOAPService"
+     targetNamespace="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:tns="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="https://group.atradius.com"
+     xmlns:ns2="https://group.atradius1.com"
+     xmlns:ns3="https://test.com"
+    >
+    <plnk:partnerLinkType name="FetchDashboardSOAPService">
+        <plnk:role name="execute_ptt" portType="tns:execute_ptt"/>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+         location="FetchDashboardSOAPService.wsdl"/>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="https://group.atradius.com"
+             xmlns:ns2="https://group.atradius1.com" xmlns:ns3="https://test.com">
+            <xsd:import namespace="https://group.atradius.com" schemaLocation="../Schemas/DashboardServiceBPELProcess.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="https://group.atradius.com"
+             xmlns:ns2="https://group.atradius1.com" xmlns:ns3="https://test.com">
+            <xsd:import namespace="https://test.com" schemaLocation="../Schemas/TaxDutyBond.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+</wsdl:definitions>

@@ -1,0 +1,14 @@
+<adapter-config name="dbReference_Users" adapter="db" wsdlLocation="../WSDLs/dbReference_Users.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="AtradiusDB" location="eis/DB/Bond"/>
+  <endpoint-interaction portType="dbReference_Users_ptt" operation="dbReference_UsersSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="dbReference_Users.Users"/>
+      <property name="QueryName" value="dbReference_UsersSelect"/>
+      <property name="MappingsMetaDataURL" value="dbReference_Users-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

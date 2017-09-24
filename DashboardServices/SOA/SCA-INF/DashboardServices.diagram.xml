@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="FetchDashboardSOAPService">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="162" width="137" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="155" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="FetchDashboardSOAPService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>getDashboardTaskList</dgm:item>
+            <dgm:item>getDashboardTaskDetails</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="QueryTaskServiceSOAPReference">
+        <dgm:body borderWidth="2" arcRad="20" X="702" Y="26" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="692" Y="19" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="QueryTaskServiceSOAPReference" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskQueryService#wsdl.interface(TaskQueryService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>authenticate</dgm:item>
+            <dgm:item>authenticateOnBehalfOf</dgm:item>
+            <dgm:item>getWorkflowContext</dgm:item>
+            <dgm:item>destroyWorkflowContext</dgm:item>
+            <dgm:item>refreshWorkflowContext</dgm:item>
+            <dgm:item>updateWorkflowContext</dgm:item>
+            <dgm:item>queryTasks</dgm:item>
+            <dgm:item>queryAggregatedTasks</dgm:item>
+            <dgm:item>countTasks</dgm:item>
+            <dgm:item>doesTaskExist</dgm:item>
+            <dgm:item>queryViewTasks</dgm:item>
+            <dgm:item>queryViewAggregatedTasks</dgm:item>
+            <dgm:item>countViewTasks</dgm:item>
+            <dgm:item>doesViewTaskExist</dgm:item>
+            <dgm:item>queryDecomposedTasks</dgm:item>
+            <dgm:item>queryTaskErrors</dgm:item>
+            <dgm:item>getTaskHistory</dgm:item>
+            <dgm:item>getTaskDetailsById</dgm:item>
+            <dgm:item>getTaskDetailsByNumber</dgm:item>
+            <dgm:item>getTaskVersionDetails</dgm:item>
+            <dgm:item>getPermittedAssignees</dgm:item>
+            <dgm:item>getPermittedAssigneesForTasks</dgm:item>
+            <dgm:item>getTaskSequence</dgm:item>
+            <dgm:item>getSummaryFieldsInfoForTask</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="dbReference_Users">
+        <dgm:body borderWidth="2" arcRad="20" X="702" Y="228" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="692" Y="221" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="dbReference_Users" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication/DashboardServices/dbReference_Users#wsdl.interface(dbReference_Users_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>dbReference_UsersSelect</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="DashboardServicesBPELProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="365" Y="147" width="130" height="86">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="355" Y="140" width="150" height="102">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="FetchDashboardSOAPService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="QueryTaskServiceSOAPReference" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskQueryService#wsdl.interface(TaskQueryService)"/>
+        <dgm:outputPort name="dbReference_Users" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication/DashboardServices/dbReference_Users#wsdl.interface(dbReference_Users_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="FetchDashboardSOAPService" target="DashboardServicesBPELProcess/FetchDashboardSOAPService" width="2">
+        <dgm:gSegment X1="168" Y1="172" X2="355" Y2="172"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="DashboardServicesBPELProcess/QueryTaskServiceSOAPReference" target="QueryTaskServiceSOAPReference" width="2">
+        <dgm:gSegment X1="505" Y1="172" X2="529" Y2="172"/>
+        <dgm:gSegment X1="529" Y1="172" X2="529" Y2="36"/>
+        <dgm:gSegment X1="529" Y1="36" X2="692" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="DashboardServicesBPELProcess/dbReference_Users" target="dbReference_Users" width="2">
+        <dgm:gSegment X1="505" Y1="197" X2="529" Y2="197"/>
+        <dgm:gSegment X1="529" Y1="197" X2="529" Y2="238"/>
+        <dgm:gSegment X1="529" Y1="238" X2="692" Y2="238"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

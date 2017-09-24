@@ -1,0 +1,262 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Aug 25 15:14:37 IST 2017
+  Author:  ibm
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="DashboardServicesBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/AtradiusUtilityApplication/DashboardServices/DashboardServicesBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/AtradiusUtilityApplication/DashboardServices/DashboardServicesBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="https://group.atradius.com"
+         xmlns:ns3="http://xmlns.oracle.com/bpel/workflow/taskQueryService" xmlns:ns4="https://test.com"
+         xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/common"
+         xmlns:ns6="http://xmlns.oracle.com/bpel/workflow/taskQuery"
+         xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication/DashboardServices/dbReference"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication/DashboardServices/dbReference_2"
+         xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/dbReference_2"
+         xmlns:ns11="http://xmlns.oracle.com/pcbpel/adapter/db/dbReference"
+         xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication/DashboardServices/dbReference_Users"
+         xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference_Users">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+          location="../WSDLs/FetchDashboardSOAPService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <import namespace="https://test.com" location="../Schemas/TaxDutyBond.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="https://group.atradius.com" location="../Schemas/DashboardServiceBPELProcess.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://oracle.com/sca/soapservice/AtradiusUtilityApplication/DashboardServices/FetchDashboardSOAPService"
+          location="../WSDLs/FetchDashboardSOAPServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+          ui:processWSDL="true"/>
+  <partnerLinks>
+    <partnerLink name="FetchDashboardSOAPService" partnerLinkType="ns1:FetchDashboardSOAPService" myRole="execute_ptt"/>
+    <partnerLink name="QueryTaskServiceSOAPReference" partnerLinkType="ns3:QueryTaskServiceSOAPReference"
+                 partnerRole="TaskQueryService"/>
+    <partnerLink name="dbReference_Users" partnerLinkType="ns12:dbReference_Users_plt"
+                 partnerRole="dbReference_Users_role"/>
+  </partnerLinks>
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="OnMessage_getDashboardTaskList_InputVariable" messageType="ns1:taskListRequestMessage"/>
+    <variable name="OnMessage_getDashboardTaskDetails_InputVariable" messageType="ns1:taskDetailRequestMessage"/>
+    <variable name="TaskDetails_getDashboardTaskDetails_OutputVariable" messageType="ns1:taskDetailReplyMessage"/>
+    <variable name="InvokeQueryTaskService_queryTasks_InputVariable" messageType="ns3:taskListRequestMessage"/>
+    <variable name="InvokeQueryTaskService_queryTasks_OutputVariable" messageType="ns3:taskListResponseMessage"/>
+    <!--Variable1 to copy the anyType payload from taskQueryOutput -->
+    <variable name="Variable1" element="ns4:root"/>
+    <variable name="TaskListReply_getDashboardTaskList_OutputVariable" messageType="ns1:taskListReplyMessage"/>
+     <!--Variable2 to transform payload in without namespace payload-->
+    <variable name="Variable2" element="ns4:root"/>
+    <variable name="InvokeDB_dbReference_InputVariable" messageType="ns7:dbReferenceInput_msg"/>
+    <variable name="InvokeDB_dbReference_OutputVariable" messageType="ns7:dbReferenceOutputCollection_msg"/>
+    <variable name="Invoke1_dbReference_UsersSelect_InputVariable"
+              messageType="ns12:dbReference_UsersSelect_inputParameters"/>
+    <variable name="Invoke1_dbReference_UsersSelect_OutputVariable" messageType="ns12:UsersCollection_msg"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <assign name="AssignError">
+        <copy>
+          <from>"Error"</from>
+          <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$TaskListReply_getDashboardTaskList_OutputVariable.payload/ns2:TaxDutyBond/ns2:AdditionalADFInputs/ns2:ButtonType</to>
+        </copy>
+      </assign>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in DashboardServicesBPELProcess.wsdl) -->
+
+    <!-- Generate reply to synchronous request -->
+    <pick name="Pick1" createInstance="yes">
+      <onMessage bpelx:name="DashboardTaskList" partnerLink="FetchDashboardSOAPService"
+                 variable="OnMessage_getDashboardTaskList_InputVariable" portType="ns1:execute_ptt"
+                 operation="getDashboardTaskList">
+        <sequence name="Sequence1">
+          <assign name="AssignUserName">
+            <copy>
+              <from>$OnMessage_getDashboardTaskList_InputVariable.payload/ns2:UserId</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke1_dbReference_UsersSelect_InputVariable.dbReference_UsersSelect_inputParameters/ns13:uName</to>
+            </copy>
+          </assign>
+          <invoke name="InvokeUserDB" partnerLink="dbReference_Users"
+                  portType="ns12:dbReference_Users_ptt" operation="dbReference_UsersSelect"
+                  inputVariable="Invoke1_dbReference_UsersSelect_InputVariable"
+                  outputVariable="Invoke1_dbReference_UsersSelect_OutputVariable" bpelx:invokeAsDetail="no"/>
+          <assign name="AssignToTaskQuesryInput">
+            <copy>
+              <from>$OnMessage_getDashboardTaskList_InputVariable.payload/ns2:UserId</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns5:workflowContext/ns5:credential/ns5:login</to>
+            </copy>
+            <copy>
+              <from>0</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/@startRow</to>
+            </copy>
+            <copy>
+              <from>10000</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/@endRow</to>
+            </copy>
+            <copy>
+              <from>"TASKNUMBER"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:displayColumnList/ns6:displayColumn</to>
+            </copy>
+            <copy>
+              <from>$Invoke1_dbReference_UsersSelect_OutputVariable.UsersCollection/ns13:Users/ns13:password</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns5:workflowContext/ns5:credential/ns5:password</to>
+            </copy>
+            <copy>
+              <from>"Payload"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:optionalInfoList/ns6:taskOptionalInfo</to>
+            </copy>
+            <copy>
+              <from>"ALL"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:predicate/ns6:assignmentFilter</to>
+            </copy>
+            <copy>
+              <from>"WFTask"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:predicate/ns6:predicate/ns6:clause/ns6:column/@tableName</to>
+            </copy>
+            <copy>
+              <from>"State"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:predicate/ns6:predicate/ns6:clause/ns6:column/ns6:columnName</to>
+            </copy>
+            <copy>
+              <from>"EQ"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:predicate/ns6:predicate/ns6:clause/ns6:operator</to>
+            </copy>
+            <copy>
+              <from>"ASSIGNED"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeQueryTaskService_queryTasks_InputVariable.payload/ns6:taskPredicateQuery/ns6:predicate/ns6:predicate/ns6:clause/ns6:value</to>
+            </copy>
+          </assign>
+          <assign name="TransformInputToQueryTaskServiceInput">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/TransformInputToQueryTaskServiceInput_2.xsl", $InvokeQueryTaskService_queryTasks_InputVariable.payload)</from>
+              <to variable="InvokeQueryTaskService_queryTasks_InputVariable" part="payload"/>
+            </copy>
+          </assign>
+          <invoke name="InvokeQueryTaskService" partnerLink="QueryTaskServiceSOAPReference"
+                  portType="ns3:TaskQueryService" operation="queryTasks"
+                  inputVariable="InvokeQueryTaskService_queryTasks_InputVariable"
+                  outputVariable="InvokeQueryTaskService_queryTasks_OutputVariable" bpelx:invokeAsDetail="no"/>
+          <assign name="TransformToVariablePayload">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/TransformToVariablePayload_3.xsl", $InvokeQueryTaskService_queryTasks_OutputVariable.payload)</from>
+              <to variable="Variable2"/>
+            </copy>
+          </assign>
+          <assign name="VarToVarRenameNamespace">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/VarToVar_2.xsl", $Variable2)</from>
+              <to variable="Variable2"/>
+            </copy>
+          </assign>
+          <assign name="VarToVarRemoveNamespace">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/VarToVarRemoveNamespace_2.xsl", $Variable2)</from>
+              <to variable="Variable2"/>
+            </copy>
+          </assign>
+          <assign name="VarToVarRenamePayloadNS">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/VarToVarRenamePayloadNS_2.xsl", $Variable2)</from>
+              <to variable="Variable2"/>
+            </copy>
+          </assign>
+          <assign name="TransformToDashboardTaskListOutput">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/TransformToDashboardTaskListOutput_4.xsl", $Variable2)</from>
+              <to variable="TaskListReply_getDashboardTaskList_OutputVariable" part="payload"/>
+            </copy>
+          </assign>
+          <reply name="TaskListReply" partnerLink="FetchDashboardSOAPService"
+                 variable="TaskListReply_getDashboardTaskList_OutputVariable" portType="ns1:execute_ptt"
+                 operation="getDashboardTaskList"/>
+        </sequence>
+      </onMessage>
+      <onMessage bpelx:name="DashboardTaskDetails" partnerLink="FetchDashboardSOAPService"
+                 variable="OnMessage_getDashboardTaskDetails_InputVariable" portType="ns1:execute_ptt"
+                 operation="getDashboardTaskDetails">
+        <sequence name="Sequence2">
+          <assign name="AssignTaskDetails">
+            <copy>
+              <from>"Policy1"</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$TaskDetails_getDashboardTaskDetails_OutputVariable.payload/ns2:TaxDutyBond/ns2:CustomerBond/ns2:PolicyDtl/ns2:PolicyId</to>
+            </copy>
+            <copy>
+              <from>$OnMessage_getDashboardTaskDetails_InputVariable.payload/ns2:UserId</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$TaskDetails_getDashboardTaskDetails_OutputVariable.payload/ns2:TaxDutyBond/ns2:CustomerBond/ns2:CustomerId</to>
+            </copy>
+            <copy>
+              <from>$OnMessage_getDashboardTaskDetails_InputVariable.payload/ns2:BondId</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$TaskDetails_getDashboardTaskDetails_OutputVariable.payload/ns2:TaxDutyBond/ns2:CustomerBond/ns2:PolicyDtl/ns2:BondDtl/ns2:BondId</to>
+            </copy>
+          </assign>
+          <reply name="TaskDetails" partnerLink="FetchDashboardSOAPService"
+                 variable="TaskDetails_getDashboardTaskDetails_OutputVariable" portType="ns1:execute_ptt"
+                 operation="getDashboardTaskDetails"/>
+        </sequence>
+      </onMessage>
+    </pick>
+  </sequence>
+</process>

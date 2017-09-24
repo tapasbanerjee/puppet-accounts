@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="dbReference1"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication2/UpdateTaskActivityService/dbReference1"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication2/UpdateTaskActivityService/dbReference1"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference1"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="dbReference1_plt" >
+    <plt:role name="dbReference1_role" >
+      <plt:portType name="tns:dbReference1_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference1" schemaLocation="../Schemas/dbReference1_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="dbReference1Select_inputParameters">
+        <wsdl:part name="dbReference1Select_inputParameters" element="top:dbReference1Select_uNameInputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="UsersCollection_msg">
+        <wsdl:part name="UsersCollection" element="top:UsersCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="dbReference1_ptt">
+        <wsdl:operation name="dbReference1Select">
+            <wsdl:input message="tns:dbReference1Select_inputParameters"/>
+            <wsdl:output message="tns:UsersCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

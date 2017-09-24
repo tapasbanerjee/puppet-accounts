@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/dbReference_2" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/dbReference_2" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="dbReference_2Input" type="dbReference_2Input"/>
+   <xs:complexType name="dbReference_2Input">
+      <xs:sequence>
+         <xs:element name="USER_NAME" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="dbReference_2OutputCollection" type="dbReference_2OutputCollection"/>
+   <xs:complexType name="dbReference_2OutputCollection">
+      <xs:sequence>
+         <xs:element name="dbReference_2Output" type="dbReference_2Output" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="dbReference_2Output">
+      <xs:sequence>
+         <xs:element name="USER_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="USER_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="USER_ROLE" type="xs:string" nillable="true"/>
+         <xs:element name="APPROVAL_LIMIT" type="xs:decimal" nillable="true"/>
+         <xs:element name="PASSWORD" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="UpdateTaskActivityWS">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="257" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="250" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="UpdateTaskActivityWS" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://oracle.com/sca/soapservice/AtradiusUtilityApplication2/UpdateTaskActivityService/UpdateTaskActivityWS#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="QueryTaskService">
+        <dgm:body borderWidth="2" arcRad="20" X="742" Y="26" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="732" Y="19" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="QueryTaskService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskQueryService#wsdl.interface(TaskQueryService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>authenticate</dgm:item>
+            <dgm:item>authenticateOnBehalfOf</dgm:item>
+            <dgm:item>getWorkflowContext</dgm:item>
+            <dgm:item>destroyWorkflowContext</dgm:item>
+            <dgm:item>refreshWorkflowContext</dgm:item>
+            <dgm:item>updateWorkflowContext</dgm:item>
+            <dgm:item>queryTasks</dgm:item>
+            <dgm:item>queryAggregatedTasks</dgm:item>
+            <dgm:item>countTasks</dgm:item>
+            <dgm:item>doesTaskExist</dgm:item>
+            <dgm:item>queryViewTasks</dgm:item>
+            <dgm:item>queryViewAggregatedTasks</dgm:item>
+            <dgm:item>countViewTasks</dgm:item>
+            <dgm:item>doesViewTaskExist</dgm:item>
+            <dgm:item>queryDecomposedTasks</dgm:item>
+            <dgm:item>queryTaskErrors</dgm:item>
+            <dgm:item>getTaskHistory</dgm:item>
+            <dgm:item>getTaskDetailsById</dgm:item>
+            <dgm:item>getTaskDetailsByNumber</dgm:item>
+            <dgm:item>getTaskVersionDetails</dgm:item>
+            <dgm:item>getPermittedAssignees</dgm:item>
+            <dgm:item>getPermittedAssigneesForTasks</dgm:item>
+            <dgm:item>getTaskSequence</dgm:item>
+            <dgm:item>getSummaryFieldsInfoForTask</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="UpdateTaskService">
+        <dgm:body borderWidth="2" arcRad="20" X="742" Y="228" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="732" Y="221" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="UpdateTaskService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>initiateTask</dgm:item>
+            <dgm:item>reinitiateTask</dgm:item>
+            <dgm:item>overrideRoutingSlip</dgm:item>
+            <dgm:item>skipCurrentAssignment</dgm:item>
+            <dgm:item>updateTask</dgm:item>
+            <dgm:item>mergeAndUpdateTask</dgm:item>
+            <dgm:item>submitInfoForTask</dgm:item>
+            <dgm:item>getUsersToRequestInfoForTask</dgm:item>
+            <dgm:item>getFutureParticipants</dgm:item>
+            <dgm:item>getApprovers</dgm:item>
+            <dgm:item>escalateTask</dgm:item>
+            <dgm:item>escalateTasks</dgm:item>
+            <dgm:item>withdrawTask</dgm:item>
+            <dgm:item>withdrawTasks</dgm:item>
+            <dgm:item>suspendTask</dgm:item>
+            <dgm:item>suspendTasks</dgm:item>
+            <dgm:item>resumeTask</dgm:item>
+            <dgm:item>resumeTasks</dgm:item>
+            <dgm:item>acquireTask</dgm:item>
+            <dgm:item>acquireTasks</dgm:item>
+            <dgm:item>releaseTask</dgm:item>
+            <dgm:item>releaseTasks</dgm:item>
+            <dgm:item>reassignTask</dgm:item>
+            <dgm:item>reassignTasks</dgm:item>
+            <dgm:item>routeTask</dgm:item>
+            <dgm:item>pushBackTask</dgm:item>
+            <dgm:item>delegateTask</dgm:item>
+            <dgm:item>delegateTasks</dgm:item>
+            <dgm:item>errorTask</dgm:item>
+            <dgm:item>addComment</dgm:item>
+            <dgm:item>addCommentToTasks</dgm:item>
+            <dgm:item>addAttachment</dgm:item>
+            <dgm:item>removeAttachment</dgm:item>
+            <dgm:item>addDocument</dgm:item>
+            <dgm:item>removeDocument</dgm:item>
+            <dgm:item>renewTask</dgm:item>
+            <dgm:item>updateTaskOutcome</dgm:item>
+            <dgm:item>updateOutcomeOfTasks</dgm:item>
+            <dgm:item>updateTaskOutcomeAndRoute</dgm:item>
+            <dgm:item>requestInfoForTask</dgm:item>
+            <dgm:item>requestInfoForTaskWithReapproval</dgm:item>
+            <dgm:item>createToDoTask</dgm:item>
+            <dgm:item>deleteTask</dgm:item>
+            <dgm:item>deleteTasks</dgm:item>
+            <dgm:item>purgeTask</dgm:item>
+            <dgm:item>purgeTasks</dgm:item>
+            <dgm:item>setTaskSequenceChanges</dgm:item>
+            <dgm:item>restartRootTask</dgm:item>
+            <dgm:item>prepareForRestartRootTask</dgm:item>
+            <dgm:item>reevaluateTask</dgm:item>
+            <dgm:item>updatePriority</dgm:item>
+            <dgm:item>updatePriorityOfTasks</dgm:item>
+            <dgm:item>updateArchivedOnValueForTasks</dgm:item>
+            <dgm:item>suspendTimers</dgm:item>
+            <dgm:item>resumeTimers</dgm:item>
+            <dgm:item>decomposeTask</dgm:item>
+            <dgm:item>updateTasksByCommands</dgm:item>
+            <dgm:item>onTaskCompleted</dgm:item>
+            <dgm:item>onTaskAssigned</dgm:item>
+            <dgm:item>onTaskUpdated</dgm:item>
+            <dgm:item>onSubTaskUpdated</dgm:item>
+            <dgm:item>onStageCompleted</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="dbReference1">
+        <dgm:body borderWidth="2" arcRad="20" X="742" Y="430" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="732" Y="423" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="dbReference1" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication2/UpdateTaskActivityService/dbReference1#wsdl.interface(dbReference1_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>dbReference1Select</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="UpdateTaskActivityBPELProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="385" Y="242" width="130" height="111">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="375" Y="235" width="150" height="127">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="UpdateTaskActivityWS" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://oracle.com/sca/soapservice/AtradiusUtilityApplication2/UpdateTaskActivityService/UpdateTaskActivityWS#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="QueryTaskService" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskQueryService#wsdl.interface(TaskQueryService)"/>
+        <dgm:outputPort name="UpdateTaskService" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="dbReference1" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/AtradiusUtilityApplication2/UpdateTaskActivityService/dbReference1#wsdl.interface(dbReference1_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="UpdateTaskActivityWS" target="UpdateTaskActivityBPELProcess/UpdateTaskActivityWS" width="2">
+        <dgm:gSegment X1="168" Y1="267" X2="375" Y2="267"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="UpdateTaskActivityBPELProcess/QueryTaskService" target="QueryTaskService" width="2">
+        <dgm:gSegment X1="525" Y1="267" X2="549" Y2="267"/>
+        <dgm:gSegment X1="549" Y1="267" X2="549" Y2="36"/>
+        <dgm:gSegment X1="549" Y1="36" X2="732" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="UpdateTaskActivityBPELProcess/UpdateTaskService" target="UpdateTaskService" width="2">
+        <dgm:gSegment X1="525" Y1="292" X2="564" Y2="292"/>
+        <dgm:gSegment X1="564" Y1="292" X2="564" Y2="238"/>
+        <dgm:gSegment X1="564" Y1="238" X2="732" Y2="238"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="UpdateTaskActivityBPELProcess/dbReference1" target="dbReference1" width="2">
+        <dgm:gSegment X1="525" Y1="317" X2="549" Y2="317"/>
+        <dgm:gSegment X1="549" Y1="317" X2="549" Y2="440"/>
+        <dgm:gSegment X1="549" Y1="440" X2="732" Y2="440"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

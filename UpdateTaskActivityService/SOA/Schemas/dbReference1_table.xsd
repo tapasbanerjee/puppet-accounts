@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference1" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="UsersCollection" type="UsersCollection"/>
+   <xs:complexType name="UsersCollection">
+      <xs:sequence>
+         <xs:element name="Users" type="Users" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Users">
+      <xs:sequence>
+         <xs:element name="userId" type="xs:decimal"/>
+         <xs:element name="userName" type="string50" minOccurs="0"/>
+         <xs:element name="userRole" type="string100" minOccurs="0"/>
+         <xs:element name="approvalLimit" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="password" type="string60" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="dbReference1Select_uNameInputParameters" type="dbReference1Select_uName"/>
+   <xs:complexType name="dbReference1Select_uName">
+      <xs:sequence>
+         <xs:element name="uName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string50">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="50"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string100">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="100"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string60">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="60"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

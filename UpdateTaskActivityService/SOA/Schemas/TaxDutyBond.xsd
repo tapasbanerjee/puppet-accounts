@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://group.atradius.com"
+            targetNamespace="https://group.atradius.com" elementFormDefault="qualified">
+  <xsd:complexType name="Customer">
+    <xsd:sequence>
+      <xsd:element name="CustomerId" type="xsd:string"/>
+      <xsd:element name="CustomerName" type="xsd:string"/>
+      <xsd:element name="CustomerAddress" type="xsd:string"/>
+      <xsd:element name="CustomerPostalCode" type="xsd:string"/>
+      <xsd:element name="CustomerCity" type="xsd:string"/>
+      <xsd:element name="CustomerCountry" type="xsd:string"/>
+      <xsd:element name="CustomerVAT" type="xsd:string"/>
+      <xsd:element name="CustomerStatus" type="xsd:string"/>
+      <xsd:element name="CustomerContactName" type="xsd:string"/>
+      <xsd:element name="PolicyDtl" type="Policy" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Policy">
+    <xsd:sequence>
+      <xsd:element name="PolicyId" type="xsd:string"/>
+      <xsd:element name="CustomerId" type="xsd:string"/>
+      <xsd:element name="PolicyStatus" type="xsd:string"/>
+      <xsd:element name="PolicyIssueDate" type="xsd:string"/>
+      <xsd:element name="PolicyEffectiveDate" type="xsd:string"/>
+      <xsd:element name="PolicyCountry" type="xsd:string"/>
+      <xsd:element name="PolicyGeneralConditions" type="xsd:string"/>
+      <xsd:element name="PolicyParticularConditions" type="xsd:string"/>
+      <xsd:element name="PolicyNotice" type="xsd:string"/>
+      <xsd:element name="BondDtl" type="Bond" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Document">
+    <xsd:sequence>
+      <xsd:element name="DocumentId" type="xsd:string"/>
+      <xsd:element name="BondId" type="xsd:string"/>
+      <xsd:element name="Name" type="xsd:string"/>
+      <xsd:element name="CreatedDate" type="xsd:string"/>
+      <xsd:element name="Type" type="xsd:string"/>
+      <xsd:element name="Link" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Beneficiary">
+    <xsd:sequence>
+      <xsd:element name="BeneficiaryId" type="xsd:string"/>
+      <xsd:element name="BeneficiaryCompanyName" type="xsd:string"/>
+      <xsd:element name="BeneficiaryFirstName" type="xsd:string"/>
+      <xsd:element name="BeneficiaryLastName" type="xsd:string"/>
+      <xsd:element name="BeneficiaryAddress" type="xsd:string"/>
+      <xsd:element name="BeneficiaryPostalCode" type="xsd:string"/>
+      <xsd:element name="BeneficiaryCity" type="xsd:string"/>
+      <xsd:element name="BeneficiaryCountry" type="xsd:string"/>
+      <xsd:element name="BeneficiaryVAT" type="xsd:string"/>
+      <xsd:element name="BeneficiaryGroupingId" type="xsd:string"/>
+      <xsd:element name="BeneficiaryStatus" type="xsd:string"/>
+      <xsd:element name="BeneficiaryContactName" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Project">
+    <xsd:sequence>
+      <xsd:element name="Specification" type="xsd:string"/>
+      <xsd:element name="Reference" type="xsd:string"/>
+      <xsd:element name="ExpectedDeliveryDate" type="xsd:string"/>
+      <xsd:element name="FixedExpiryDate" type="xsd:string"/>
+      <xsd:element name="ExpectedExpiryDate" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Case">
+    <xsd:sequence>
+      <xsd:element name="CaseId" type="xsd:string"/>
+      <xsd:element name="CaseSpecification" type="xsd:string"/>
+      <xsd:element name="CaseReference" type="xsd:string"/>
+      <xsd:element name="ExpectedDeliveryDate" type="xsd:string"/>
+      <xsd:element name="FixedExpiryDate" type="xsd:string"/>
+      <xsd:element name="ExpectedExpiryDate" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Product">
+    <xsd:sequence>
+      <xsd:element name="ProductId" type="xsd:string"/>
+      <xsd:element name="BondClass" type="xsd:string"/>
+      <xsd:element name="Product" type="xsd:string"/>
+      <xsd:element name="BondStandardText" type="xsd:string"/>
+      <xsd:element name="BondCustomText" type="xsd:string"/>
+      <xsd:element name="BondAmount" type="xsd:string"/>
+      <xsd:element name="BondCurrency" type="xsd:string"/>
+      <xsd:element name="BondStartDate" type="xsd:string"/>
+      <xsd:element name="BondEndDate" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Bond">
+    <xsd:sequence>
+      <xsd:element name="BondId" type="xsd:string"/>
+      <xsd:element name="PolicyId" type="xsd:string"/>
+      <xsd:element name="ProductId" type="Product"/>
+      <xsd:element name="BondStatus" type="xsd:string"/>
+      <xsd:element name="BondRequestDate" type="xsd:string"/>
+      <xsd:element name="BondExposure" type="xsd:string"/>
+      <xsd:element name="BondGroupingId" type="xsd:string"/>
+      <xsd:element name="BondUWY" type="xsd:string"/>
+      <xsd:element name="BondSpot" type="xsd:string"/>
+      <xsd:element name="BondObligation" type="xsd:string"/>
+      <xsd:element name="StandardDuration" type="xsd:string"/>
+      <xsd:element name="BondNotice" type="xsd:string"/>
+      <xsd:element name="BondType" type="xsd:string"/>
+      <xsd:element name="BondCategory">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="BondSubCategory" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Beneficiary" type="Beneficiary"/>
+      <xsd:element name="Project" type="Project"/>
+      <xsd:element name="Case" type="Case"/>
+      <xsd:element name="Documents" type="Document" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Exposure">
+    <xsd:sequence>
+      <xsd:element name="Product" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ProductName" type="xsd:string"/>
+            <xsd:element name="ProductExposureAmount" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassExposure" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CurrentBondingExposure">
+    <xsd:sequence>
+      <xsd:element name="GlobalBondingExposure" type="xsd:string"/>
+      <xsd:element name="BondClass" type="Exposure"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReviewType">
+    <xsd:sequence>
+      <xsd:element name="Product" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ProductName" type="xsd:string"/>
+            <xsd:element name="ProductReviewLimitAmount" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassReviewLimit" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReviewLimitType">
+    <xsd:sequence>
+      <xsd:element name="GlobalRL" type="xsd:string"/>
+      <xsd:element name="NextReviewDate" type="xsd:string"/>
+      <xsd:element name="BondClass" type="ReviewType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReviewLimit">
+    <xsd:sequence>
+      <xsd:element name="CurrentReviewLimit" type="ReviewLimitType"/>
+      <xsd:element name="ProposedReviewLimit" type="ReviewLimitType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LineParameter">
+    <xsd:sequence>
+      <xsd:element name="Product" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ProductName" type="xsd:string"/>
+            <xsd:element name="ProductBLSublimit" type="xsd:string"/>
+            <xsd:element name="ProductMaxIndDuration" type="xsd:string"/>
+            <xsd:element name="ProductMaxIndAmount" type="xsd:string"/>
+            <xsd:element name="ProductSpecificBondText" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClassBLSublimit" type="xsd:string"/>
+      <xsd:element name="ClassMaxIndAmount" type="xsd:string"/>
+      <xsd:element name="ClassMaxIndDuration" type="xsd:string"/>
+      <xsd:element name="ClassSpecificText" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BondLineParameterType">
+    <xsd:sequence>
+      <xsd:element name="BondLineAmount" type="xsd:string"/>
+      <xsd:element name="BondClass" type="LineParameter" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BondLineParameter">
+    <xsd:sequence>
+      <xsd:element name="CurrentBLP" type="BondLineParameterType"/>
+      <xsd:element name="ProposedBLP" type="BondLineParameterType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EconomicalAnalysis">
+    <xsd:sequence>
+      <xsd:element name="CreationDate" type="xsd:string"/>
+      <xsd:element name="LegalForm" type="xsd:string"/>
+      <xsd:element name="ShareHolder" type="xsd:string"/>
+      <xsd:element name="History" type="xsd:string"/>
+      <xsd:element name="GroupActivity" type="xsd:string"/>
+      <xsd:element name="MarketStudy" type="xsd:string"/>
+      <xsd:element name="ExtraInfo" type="xsd:string"/>
+      <xsd:element name="OpinionFinReports" type="xsd:string"/>
+      <xsd:element name="OpinionFinElements" type="xsd:string"/>
+      <xsd:element name="PerspectiveForNextPeriod" type="xsd:string"/>
+      <xsd:element name="ProvisionalSales" type="xsd:string"/>
+      <xsd:element name="InvestmentsAndProject" type="xsd:string"/>
+      <xsd:element name="ExternalSources" type="xsd:string"/>
+      <xsd:element name="Strengths" type="xsd:string"/>
+      <xsd:element name="Weakness" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="History">
+    <xsd:sequence>
+      <xsd:element name="HistoryRow" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Decision" type="xsd:string"/>
+            <xsd:element name="Underwriter" type="xsd:string"/>
+            <xsd:element name="DecisionDate" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Analysis">
+    <xsd:sequence>
+      <xsd:element name="AnalysisId" type="xsd:string"/>
+      <xsd:element name="BondId" type="xsd:string"/>
+      <xsd:element name="CurrentBondingExposure" type="CurrentBondingExposure"/>
+      <xsd:element name="ReviewLimits" type="ReviewLimit"/>
+      <xsd:element name="BondLineParameters" type="BondLineParameter"/>
+      <xsd:element name="EconomicalAnalysis" type="EconomicalAnalysis"/>
+      <xsd:element name="History" type="History"/>
+      <xsd:element name="UnderwriterOpinion">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ExposureComments" type="xsd:string"/>
+            <xsd:element name="Motive" type="xsd:string"/>
+            <xsd:element name="Decisions" type="xsd:string"/>
+            <xsd:element name="Conditions" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UserId" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADFInputType">
+    <xsd:sequence>
+      <xsd:element name="UserId" type="xsd:string"/>
+      <xsd:element name="UserRole" type="xsd:string"/>
+      <xsd:element name="BondId" type="xsd:string"/>
+      <xsd:element name="ButtonType" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+        <xsd:element name="TaxDutyBond">
+          <xsd:annotation>
+            <xsd:documentation>CustomerBondDtl</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="CustomerBond" type="Customer"/>
+              <xsd:element name="Analysis" type="Analysis"/>
+              <xsd:element name="AdditionalADFInputs" type="ADFInputType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      
+  <xsd:element name="processResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="result" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
